@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import { Hero, AnimatedContainer, TextStagger } from '@/components/LovableHero';
 import { FloatingCrypto } from '@/components/FloatingCrypto';
@@ -43,6 +44,7 @@ const Index = () => {
       <main>
         <div className="relative min-h-screen">
           <Hero className="bg-background pb-48">
+            {/* Desktop Floating Agents */}
             {aiAgents.map((agent, index) => (
               <FloatingCrypto
                 key={index}
@@ -51,11 +53,39 @@ const Index = () => {
                 role={agent.role}
                 position={agent.position}
                 index={index}
-                className={agent.name === "Bella" || agent.name === "Sarah" ? "md:top-[48%] top-[calc(100%-280px)] z-20" : ""}
               />
             ))}
 
-            <div className="relative z-10 flex flex-col items-center text-center max-w-5xl px-4 space-y-8 mt-32">
+            {/* Mobile Agent Row */}
+            <div className="md:hidden absolute top-8 left-0 right-0 z-10 flex justify-center px-4">
+              <div className="flex items-center gap-2 overflow-x-auto pb-2 max-w-full scrollbar-hide">
+                {aiAgents.map((agent, index) => (
+                  <motion.div
+                    key={index}
+                    className="flex flex-col items-center flex-shrink-0"
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    style={{ marginLeft: index > 0 ? '-12px' : '0' }}
+                  >
+                    <div
+                      className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary/40 backdrop-blur-sm"
+                      style={{
+                        background: "rgba(180, 176, 254, 0.15)",
+                        boxShadow: "0 0 20px rgba(180, 176, 254, 0.3)",
+                      }}
+                    >
+                      <img src={agent.image} alt={agent.name} className="w-full h-full object-cover" />
+                    </div>
+                    <span className="text-xs font-semibold text-foreground mt-1 whitespace-nowrap">
+                      {agent.name}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            <div className="relative z-10 flex flex-col items-center text-center max-w-5xl px-4 space-y-8 mt-32 md:mt-32">
               <div className="text-5xl md:text-7xl font-medium tracking-tight leading-tight mt-24">
                 <div>
                   <TextStagger text="Put Your Service Sales" as="span" className="text-foreground" stagger={0.05} direction="bottom" />

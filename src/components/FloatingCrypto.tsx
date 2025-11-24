@@ -14,7 +14,7 @@ interface CryptoIconProps {
 export function FloatingCrypto({ image, icon, name, role, position, index, className }: CryptoIconProps) {
   return (
     <motion.div
-      className={cn("absolute flex flex-col items-center gap-2", className)}
+      className={cn("absolute hidden md:flex flex-col items-center gap-2", className)}
       style={{
         left: position.x,
         top: position.y,
