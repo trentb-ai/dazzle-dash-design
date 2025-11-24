@@ -86,24 +86,25 @@ const Index = () => {
             </div>
 
             <div className="relative z-10 flex flex-col items-center text-center max-w-5xl px-4 space-y-8 mt-10 md:mt-32">
-              <div className="text-3xl sm:text-4xl md:text-7xl font-medium tracking-tight leading-tight mt-16 md:mt-24">
+              {/* Mobile hero heading (non-animated) */}
+              <div className="block md:hidden mt-6">
+                <div className="text-3xl font-semibold tracking-tight leading-tight">
+                  <span className="block text-foreground">
+                    Put Your Service Sales
+                  </span>
+                  <span className="block bg-gradient-to-r from-primary via-primary-light to-primary bg-clip-text text-transparent">
+                    on Autopilot
+                  </span>
+                </div>
+              </div>
+
+              {/* Desktop animated hero heading */}
+              <div className="hidden md:block text-5xl md:text-7xl font-medium tracking-tight leading-tight mt-24">
                 <div>
-                  <TextStagger
-                    text="Put Your Service Sales"
-                    as="span"
-                    className="text-foreground"
-                    stagger={0.05}
-                    direction="bottom"
-                  />
+                  <TextStagger text="Put Your Service Sales" as="span" className="text-foreground" stagger={0.05} direction="bottom" />
                 </div>
                 <div className="mt-2">
-                  <TextStagger
-                    text="on Autopilot"
-                    as="span"
-                    className="bg-gradient-to-r from-primary via-primary-light to-primary bg-clip-text text-transparent"
-                    stagger={0.05}
-                    direction="bottom"
-                  />
+                  <TextStagger text="on Autopilot" as="span" className="bg-gradient-to-r from-primary via-primary-light to-primary bg-clip-text text-transparent" stagger={0.05} direction="bottom" />
                 </div>
               </div>
 
