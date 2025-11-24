@@ -28,10 +28,10 @@ const Navbar = () => {
     <header>
       <nav data-state={menuState ? 'active' : ''} className="fixed left-0 w-full z-20 px-2">
         <div className={cn('mx-auto mt-2 max-w-6xl px-6 transition-all duration-300 lg:px-12', isScrolled && 'bg-background/50 max-w-4xl rounded-2xl border backdrop-blur-lg lg:px-5')}>
-          <div className="relative flex flex-wrap items-center justify-between gap-6 lg:gap-0 py-1 lg:py-2">
+          <div className="relative flex flex-wrap items-center justify-between gap-6 lg:gap-0 py-2">
             <div className="flex w-full justify-between lg:w-auto">
               <a href="/" aria-label="home" className="flex gap-2 items-center">
-                <img src={logo} alt="Pillar + Post" className="h-6 lg:h-8 w-auto" />
+                <img src={logo} alt="Pillar + Post" className="h-8 w-auto" />
               </a>
 
               <button
