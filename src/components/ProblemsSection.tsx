@@ -31,7 +31,7 @@ const ProblemsSection = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Your Business is <span className="bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">Bleeding Opportunities</span>
+            <span className="bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">Human Inefficiency</span> is Holding Your Business Back
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Every day without AI automation costs you money, time, and customers.

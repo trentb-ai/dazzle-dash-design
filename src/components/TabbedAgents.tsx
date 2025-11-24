@@ -144,8 +144,8 @@ const TabbedAgents = () => {
                     <h2 className="text-4xl md:text-5xl font-bold text-primary-dark mb-4">
                         Meet Your AI Revenue Engine
                     </h2>
-                    <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-                        The right agents for you.
+                    <p className="text-lg md:text-xl text-accent max-w-3xl mx-auto font-semibold">
+                        Click an Agent name below to find out more
                     </p>
                 </div>
 
@@ -157,7 +157,7 @@ const TabbedAgents = () => {
                             onClick={() => setActiveTab(index)}
                             className={`px-6 py-3 rounded-xl font-semibold text-base md:text-lg transition-all duration-300 min-w-[200px] ${activeTab === index
                                 ? 'bg-gradient-to-r from-primary to-primary-light text-white shadow-xl shadow-primary/30 scale-105'
-                                : 'bg-white text-gray-600 border-2 border-gray-200 hover:border-primary hover:shadow-lg'
+                                : 'bg-white text-accent border-2 border-accent hover:border-primary hover:shadow-lg'
                                 }`}
                         >
                             {agent.name} - {agent.tagline}
