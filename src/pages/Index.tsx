@@ -97,7 +97,7 @@ const Index = () => {
             </div>
 
             <div className="relative z-10 flex flex-col items-center text-center max-w-5xl px-4 space-y-8 mt-48 md:mt-32">
-              <div className="text-5xl md:text-7xl font-medium tracking-tight leading-tight">
+              <div className="text-4xl md:text-7xl font-medium tracking-tight leading-tight">
                 <div>
                   <TextStagger text="Put Your Service Sales" as="span" className="text-foreground" stagger={0.05} direction="bottom" />
                 </div>
