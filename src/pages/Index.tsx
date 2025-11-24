@@ -57,15 +57,26 @@ const Index = () => {
             ))}
 
             {/* Mobile Agent Row */}
-            <div className="md:hidden absolute top-8 left-0 right-0 z-10 flex justify-center px-4">
+            <div className="md:hidden absolute top-28 left-0 right-0 z-10 flex justify-center px-4">
               <div className="flex items-center gap-2 overflow-x-auto pb-2 max-w-full scrollbar-hide">
                 {aiAgents.map((agent, index) => (
                   <motion.div
                     key={index}
                     className="flex flex-col items-center flex-shrink-0"
                     initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    animate={{ 
+                      opacity: 1, 
+                      y: [0, -10, 0]
+                    }}
+                    transition={{ 
+                      opacity: { duration: 0.4, delay: index * 0.1 },
+                      y: {
+                        duration: 2 + index * 0.3,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: 0.4 + index * 0.1
+                      }
+                    }}
                     style={{ marginLeft: index > 0 ? '-12px' : '0' }}
                   >
                     <div
@@ -85,8 +96,8 @@ const Index = () => {
               </div>
             </div>
 
-            <div className="relative z-10 flex flex-col items-center text-center max-w-5xl px-4 space-y-8 mt-32 md:mt-32">
-              <div className="text-5xl md:text-7xl font-medium tracking-tight leading-tight mt-24">
+            <div className="relative z-10 flex flex-col items-center text-center max-w-5xl px-4 space-y-8 mt-48 md:mt-32">
+              <div className="text-5xl md:text-7xl font-medium tracking-tight leading-tight">
                 <div>
                   <TextStagger text="Put Your Service Sales" as="span" className="text-foreground" stagger={0.05} direction="bottom" />
                 </div>
@@ -95,13 +106,21 @@ const Index = () => {
                 </div>
               </div>
 
-              <AnimatedContainer transformDirection="bottom" transition={{ duration: 0.6, delay: 0.6 }}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+              >
                 <p className="text-base md:text-lg text-muted-foreground max-w-xl leading-relaxed mt-6">
                   Engage 100% of your leads and enquiries within seconds, turning more clicks and calls into profits, on autopilot.
                 </p>
-              </AnimatedContainer>
+              </motion.div>
 
-              <AnimatedContainer transformDirection="bottom" transition={{ duration: 0.6, delay: 0.8 }}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+              >
                 <div className="flex gap-4 mt-4">
                   <Button variant="outline" size="lg" className="group relative overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-accent/20">
                     <span className="relative z-10">Test the Agents Live</span>
@@ -112,7 +131,7 @@ const Index = () => {
                     <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-out"></div>
                   </Button>
                 </div>
-              </AnimatedContainer>
+              </motion.div>
             </div>
           </Hero>
         </div>
