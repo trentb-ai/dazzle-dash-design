@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import SocialProof from '@/components/SocialProof';
 import StatsBar from '@/components/StatsBar';
 import ProblemsSection from '@/components/ProblemsSection';
+import RevenueCalculator from '@/components/RevenueCalculator';
 import DemoBox from '@/components/DemoBox';
 import { DemoModal, useExitIntent } from '@/components/DemoModal';
 import TabbedAgents from '@/components/TabbedAgents';
@@ -132,6 +133,7 @@ const Index = () => {
 
         <SocialProof />
         <StatsBar />
+        <RevenueCalculator />
         <DemoBox />
         <ProblemsSection />
         <TabbedAgents />

@@ -1,19 +1,30 @@
+import Autoplay from "embla-carousel-autoplay";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import client1_1 from '@/assets/clients/client1-1.png';
+import client1_2 from '@/assets/clients/client1-2.png';
+import client2_1 from '@/assets/clients/client2-1.png';
+import client2_2 from '@/assets/clients/client2-2.png';
+import client2_3 from '@/assets/clients/client2-3.png';
+import client2_4 from '@/assets/clients/client2-4.png';
+import client2_5 from '@/assets/clients/client2-5.png';
+import client2_6 from '@/assets/clients/client2-6.png';
+import client2_7 from '@/assets/clients/client2-7.png';
+
 const SocialProof = () => {
-  const companies = [
-    'Halifax',
-    'NatWest',
-    'Nokia',
-    'VMware',
-    'Latitude Financial',
-    'Tool Station',
-    'Lloyds Bank',
-    'Barclays',
-    'American Express',
-    'World Gold Council',
-    'TAL',
-    'Royal Bank of Scotland',
-    'Santander'
+  const clientLogos = [
+    client1_1,
+    client1_2,
+    client2_1,
+    client2_2,
+    client2_3,
+    client2_4,
+    client2_5,
+    client2_6,
+    client2_7,
   ];
+
+  // Duplicate logos for seamless loop
+  const allLogos = [...clientLogos, ...clientLogos];
 
   return (
     <div className="py-16 bg-background">
@@ -27,23 +38,38 @@ const SocialProof = () => {
             Digital Copy, Strategy & Transformation
           </h3>
           <p className="text-base text-muted-foreground max-w-3xl mx-auto">
-            Our Founder's Work, Trusted By Global Banks, FS and Professional Services Clients Worldwide.
+            Our Founder's Work, Trusted By Global Banks, FS and Professional Services Worldwide.
           </p>
         </div>
 
-        {/* Logo Grid */}
-        <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10">
-          {companies.map((company, index) => (
-            <div
-              key={index}
-              className="opacity-40 hover:opacity-60 transition-opacity duration-300"
-            >
-              <span className="text-base md:text-lg font-semibold text-muted-foreground whitespace-nowrap">
-                {company}
-              </span>
-            </div>
-          ))}
-        </div>
+        {/* Logo Carousel */}
+        <Carousel
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          plugins={[
+            Autoplay({
+              delay: 2000,
+              stopOnInteraction: false,
+            }),
+          ]}
+          className="w-full"
+        >
+          <CarouselContent className="-ml-4">
+            {allLogos.map((logo, index) => (
+              <CarouselItem key={index} className="pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
+                <div className="flex items-center justify-center p-4 h-24 opacity-60 hover:opacity-100 transition-opacity duration-300">
+                  <img 
+                    src={logo} 
+                    alt={`Client logo ${index + 1}`} 
+                    className="max-h-full max-w-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                  />
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
       </div>
     </div>
   );
