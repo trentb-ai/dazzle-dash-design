@@ -28,9 +28,8 @@ const RevenueCalculator = () => {
     <div className="py-20 bg-gradient-to-b from-background to-muted/20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-primary">Sleeping Giant Revenue </span>
-            <span className="text-muted-foreground">Calculator</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary-dark via-primary to-primary-light bg-clip-text text-transparent">
+            Sleeping Giant Revenue Calculator
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Calculate your potential additional annual revenue - and see why we named this program the Sleeping Giant.
@@ -107,9 +106,8 @@ const RevenueCalculator = () => {
               <p className="text-sm font-semibold text-primary uppercase tracking-wide">
                 Potential Monthly Revenue Increase
               </p>
-              <p className="text-5xl md:text-6xl font-bold">
-                <span className="text-accent">{formatCurrency(potentialMonthlyRevenue).split('.')[0].slice(0, 1)}</span>
-                <span className="text-primary">{formatCurrency(potentialMonthlyRevenue).slice(1)}</span>
+              <p className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-calculator-blue-dark to-calculator-blue-light bg-clip-text text-transparent">
+                {formatCurrency(potentialMonthlyRevenue)}
               </p>
             </div>
           </Card>
