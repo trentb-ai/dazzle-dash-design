@@ -24,13 +24,13 @@ const SocialProof = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary-dark mb-2">
+          <h2 className="text-4xl md:text-5xl font-bold text-primary-dark mb-2">
             Built on 20+ Years of Award-Winning
           </h2>
-          <h3 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent mb-4">
+          <h3 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent mb-4">
             Digital Copy, Strategy & Transformation
           </h3>
-          <p className="text-base text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Our Founder's Work, Trusted By Global Banks, FS and Professional Services Worldwide.
           </p>
         </div>
@@ -43,9 +43,8 @@ const SocialProof = () => {
           }}
           plugins={[
             Autoplay({
-              delay: 3000,
-              stopOnInteraction: true,
-              stopOnMouseEnter: true,
+              delay: 2000,
+              stopOnInteraction: false,
             }),
           ]}
           className="w-full mb-8"
@@ -73,9 +72,8 @@ const SocialProof = () => {
           }}
           plugins={[
             Autoplay({
-              delay: 3000,
-              stopOnInteraction: true,
-              stopOnMouseEnter: true,
+              delay: 2000,
+              stopOnInteraction: false,
             }),
           ]}
           className="w-full"
