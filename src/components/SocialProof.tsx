@@ -43,8 +43,9 @@ const SocialProof = () => {
           }}
           plugins={[
             Autoplay({
-              delay: 2000,
-              stopOnInteraction: false,
+              delay: 3000,
+              stopOnInteraction: true,
+              stopOnMouseEnter: true,
             }),
           ]}
           className="w-full mb-8"
@@ -72,8 +73,9 @@ const SocialProof = () => {
           }}
           plugins={[
             Autoplay({
-              delay: 2500,
-              stopOnInteraction: false,
+              delay: 3000,
+              stopOnInteraction: true,
+              stopOnMouseEnter: true,
             }),
           ]}
           className="w-full"
