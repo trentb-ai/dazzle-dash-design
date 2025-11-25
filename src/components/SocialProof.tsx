@@ -1,4 +1,4 @@
-import Autoplay from "embla-carousel-autoplay";
+import AutoScroll from "embla-carousel-auto-scroll";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import client1_1 from '@/assets/clients/client1-1.png';
 import client1_2 from '@/assets/clients/client1-2.png';
@@ -38,13 +38,15 @@ const SocialProof = () => {
         {/* Logo Carousel - Row 1 */}
         <Carousel
           opts={{
-            align: "start",
             loop: true,
+            align: "start",
           }}
           plugins={[
-            Autoplay({
-              delay: 2000,
+            AutoScroll({
+              playOnInit: true,
+              speed: 1,
               stopOnInteraction: false,
+              stopOnMouseEnter: true,
             }),
           ]}
           className="w-full mb-8"
@@ -67,13 +69,15 @@ const SocialProof = () => {
         {/* Logo Carousel - Row 2 */}
         <Carousel
           opts={{
-            align: "start",
             loop: true,
+            align: "start",
           }}
           plugins={[
-            Autoplay({
-              delay: 2000,
+            AutoScroll({
+              playOnInit: true,
+              speed: 1,
               stopOnInteraction: false,
+              stopOnMouseEnter: true,
             }),
           ]}
           className="w-full"
