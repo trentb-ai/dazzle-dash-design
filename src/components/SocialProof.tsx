@@ -11,9 +11,8 @@ import client2_6 from '@/assets/clients/client2-6.png';
 import client2_7 from '@/assets/clients/client2-7.png';
 
 const SocialProof = () => {
-  const clientLogos = [
-    client1_1,
-    client1_2,
+  const clientLogosRow1 = [client1_1, client1_2];
+  const clientLogosRow2 = [
     client2_1,
     client2_2,
     client2_3,
@@ -24,7 +23,8 @@ const SocialProof = () => {
   ];
 
   // Duplicate logos for seamless loop
-  const allLogos = [...clientLogos, ...clientLogos];
+  const allLogosRow1 = [...clientLogosRow1, ...clientLogosRow1];
+  const allLogosRow2 = [...clientLogosRow2, ...clientLogosRow2];
 
   return (
     <div className="py-16 bg-background">
@@ -42,7 +42,7 @@ const SocialProof = () => {
           </p>
         </div>
 
-        {/* Logo Carousel */}
+        {/* Logo Carousel - Row 1 */}
         <Carousel
           opts={{
             align: "start",
@@ -54,10 +54,39 @@ const SocialProof = () => {
               stopOnInteraction: false,
             }),
           ]}
+          className="w-full mb-8"
+        >
+          <CarouselContent className="-ml-4">
+            {allLogosRow1.map((logo, index) => (
+              <CarouselItem key={index} className="pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
+                <div className="flex items-center justify-center p-4 h-24 opacity-60 hover:opacity-100 transition-opacity duration-300">
+                  <img 
+                    src={logo} 
+                    alt={`Client logo ${index + 1}`} 
+                    className="max-h-full max-w-full object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                  />
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+
+        {/* Logo Carousel - Row 2 */}
+        <Carousel
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          plugins={[
+            Autoplay({
+              delay: 2500,
+              stopOnInteraction: false,
+            }),
+          ]}
           className="w-full"
         >
           <CarouselContent className="-ml-4">
-            {allLogos.map((logo, index) => (
+            {allLogosRow2.map((logo, index) => (
               <CarouselItem key={index} className="pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
                 <div className="flex items-center justify-center p-4 h-24 opacity-60 hover:opacity-100 transition-opacity duration-300">
                   <img 
