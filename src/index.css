@@ -17,6 +17,11 @@
     --accent: 20 100% 48%;         /* #f45100 - Orange accent */
     --accent-foreground: 0 0% 100%;
     
+    /* Calculator blue gradient colors */
+    --calculator-blue-dark: 218 95% 35%;   /* Dark blue for slider left */
+    --calculator-blue-light: 221 93% 56%;  /* Light blue for slider right */
+    --calculator-result-bg: 235 50% 95%;   /* Light lavender/blue background */
+    
     --background: 0 0% 100%;        /* Pure white */
     --foreground: 0 0% 10%;         /* #1a1a1a - Dark text */
     

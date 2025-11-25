@@ -25,6 +25,9 @@ export default {
         },
         'primary-light': "hsl(var(--primary-light))",
         'primary-dark': "hsl(var(--primary-dark))",
+        'calculator-blue-dark': "hsl(var(--calculator-blue-dark))",
+        'calculator-blue-light': "hsl(var(--calculator-blue-light))",
+        'calculator-result-bg': "hsl(var(--calculator-result-bg))",
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
