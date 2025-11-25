@@ -4,17 +4,12 @@ import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
 
 const RevenueCalculator = () => {
-  const [freshLeads, setFreshLeads] = useState(5000);
-  const [seasonedLeads, setSeasonedLeads] = useState(5000);
-  const [conversionRatio, setConversionRatio] = useState(50);
-  const [avgRevenue, setAvgRevenue] = useState(10000);
+  const [missedCalls, setMissedCalls] = useState(30);
+  const [conversionRatio, setConversionRatio] = useState(70);
+  const [avgRevenue, setAvgRevenue] = useState(5000);
 
-  // Calculate additional annual revenue
-  const freshAppointments = freshLeads * 0.10; // 10% fresh lead appointment rate
-  const seasonedAppointments = seasonedLeads * 0.05; // 5% seasoned lead appointment rate
-  const totalAppointments = freshAppointments + seasonedAppointments;
-  const totalSales = totalAppointments * (conversionRatio / 100);
-  const additionalRevenue = totalSales * avgRevenue;
+  // Calculate potential monthly revenue increase
+  const potentialMonthlyRevenue = missedCalls * (conversionRatio / 100) * avgRevenue * 4;
 
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('en-US', {
@@ -43,71 +38,54 @@ const RevenueCalculator = () => {
 
         <Card className="p-8 md:p-12 bg-card border-border shadow-xl">
           <div className="space-y-8">
-            {/* Fresh Leads */}
-            <div className="space-y-3">
-              <div className="flex justify-between items-center">
-                <label className="text-base md:text-lg font-semibold text-foreground">
-                  Fresh Leads (Under 30 Days Old)
-                </label>
-                <span className="text-2xl font-bold text-primary">
-                  {formatNumber(freshLeads)}
-                </span>
+            {/* First Row - Two fields side by side */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Missed Calls */}
+              <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <label className="text-base md:text-lg font-semibold text-foreground">
+                    Average Calls Not Answered Each Week
+                  </label>
+                  <span className="text-2xl font-bold text-primary">
+                    {formatNumber(missedCalls)}
+                  </span>
+                </div>
+                <Slider
+                  value={[missedCalls]}
+                  onValueChange={(value) => setMissedCalls(value[0])}
+                  max={200}
+                  min={1}
+                  step={1}
+                  className="w-full"
+                />
               </div>
-              <Slider
-                value={[freshLeads]}
-                onValueChange={(value) => setFreshLeads(value[0])}
-                max={20000}
-                min={100}
-                step={100}
-                className="w-full"
-              />
+
+              {/* Conversion Ratio */}
+              <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <label className="text-base md:text-lg font-semibold text-foreground">
+                    Calls Converted to Sales Ratio
+                  </label>
+                  <span className="text-2xl font-bold text-primary">
+                    {conversionRatio}%
+                  </span>
+                </div>
+                <Slider
+                  value={[conversionRatio]}
+                  onValueChange={(value) => setConversionRatio(value[0])}
+                  max={100}
+                  min={1}
+                  step={1}
+                  className="w-full"
+                />
+              </div>
             </div>
 
-            {/* Seasoned Leads */}
+            {/* Second Row - Average Revenue */}
             <div className="space-y-3">
               <div className="flex justify-between items-center">
                 <label className="text-base md:text-lg font-semibold text-foreground">
-                  Seasoned Leads (Over 30 Days Old)
-                </label>
-                <span className="text-2xl font-bold text-primary">
-                  {formatNumber(seasonedLeads)}
-                </span>
-              </div>
-              <Slider
-                value={[seasonedLeads]}
-                onValueChange={(value) => setSeasonedLeads(value[0])}
-                max={20000}
-                min={100}
-                step={100}
-                className="w-full"
-              />
-            </div>
-
-            {/* Conversion Ratio */}
-            <div className="space-y-3">
-              <div className="flex justify-between items-center">
-                <label className="text-base md:text-lg font-semibold text-foreground">
-                  Your Appointment to Sale Conversion Ratio
-                </label>
-                <span className="text-2xl font-bold text-primary">
-                  {conversionRatio}%
-                </span>
-              </div>
-              <Slider
-                value={[conversionRatio]}
-                onValueChange={(value) => setConversionRatio(value[0])}
-                max={100}
-                min={1}
-                step={1}
-                className="w-full"
-              />
-            </div>
-
-            {/* Average Revenue */}
-            <div className="space-y-3">
-              <div className="flex justify-between items-center">
-                <label className="text-base md:text-lg font-semibold text-foreground">
-                  Average Annual Revenue per Client
+                  Average Revenue per Sale
                 </label>
                 <span className="text-2xl font-bold text-primary">
                   {formatCurrency(avgRevenue)}
@@ -117,8 +95,8 @@ const RevenueCalculator = () => {
                 value={[avgRevenue]}
                 onValueChange={(value) => setAvgRevenue(value[0])}
                 max={100000}
-                min={1000}
-                step={1000}
+                min={100}
+                step={100}
                 className="w-full"
               />
             </div>
@@ -127,10 +105,10 @@ const RevenueCalculator = () => {
             <div className="pt-8 border-t border-border">
               <div className="text-center space-y-2">
                 <p className="text-lg font-semibold text-muted-foreground">
-                  Additional Annual Revenue
+                  Potential Monthly Revenue Increase
                 </p>
                 <p className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-primary via-primary-light to-primary bg-clip-text text-transparent">
-                  {formatCurrency(additionalRevenue)}
+                  {formatCurrency(potentialMonthlyRevenue)}
                 </p>
               </div>
             </div>
@@ -157,7 +135,7 @@ const RevenueCalculator = () => {
               </Button>
             </div>
             <p className="text-sm text-muted-foreground italic pt-4">
-              Calculations based on 10% fresh lead appointment rate and 5% seasoned lead appointment rate.
+              Calculation: Missed calls × conversion ratio × average sale value × 4 weeks
             </p>
           </div>
         </Card>
