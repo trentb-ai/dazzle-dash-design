@@ -26,29 +26,28 @@ const RevenueCalculator = () => {
 
   return (
     <div className="py-20 bg-gradient-to-b from-background to-muted/20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
-            Sleeping Giant Revenue Calculator
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <span className="text-primary">Sleeping Giant Revenue </span>
+            <span className="text-muted-foreground">Calculator</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Calculate your potential additional annual revenue - and see why we named this program the Sleeping Giant.
           </p>
         </div>
 
-        <Card className="p-8 md:p-12 bg-card border-border shadow-xl">
-          <div className="space-y-8">
-            {/* First Row - Two fields side by side */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Missed Calls */}
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <label className="text-base md:text-lg font-semibold text-foreground">
-                    Average Calls Not Answered Each Week
-                  </label>
-                  <span className="text-2xl font-bold text-primary">
-                    {formatNumber(missedCalls)}
-                  </span>
+        <div className="space-y-6 mb-8">
+          {/* First Row - Two fields side by side */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Missed Calls Card */}
+            <Card className="p-8 bg-card border-border shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div className="space-y-4">
+                <label className="text-sm font-semibold text-primary uppercase tracking-wide">
+                  Average Calls Not Answered Each Week
+                </label>
+                <div className="text-4xl font-bold text-primary mb-2">
+                  {formatNumber(missedCalls)} <span className="text-2xl text-muted-foreground">calls</span>
                 </div>
                 <Slider
                   value={[missedCalls]}
@@ -56,19 +55,19 @@ const RevenueCalculator = () => {
                   max={200}
                   min={1}
                   step={1}
-                  className="w-full"
+                  className="w-full calculator-slider"
                 />
               </div>
+            </Card>
 
-              {/* Conversion Ratio */}
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <label className="text-base md:text-lg font-semibold text-foreground">
-                    Calls Converted to Sales Ratio
-                  </label>
-                  <span className="text-2xl font-bold text-primary">
-                    {conversionRatio}%
-                  </span>
+            {/* Conversion Ratio Card */}
+            <Card className="p-8 bg-card border-border shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div className="space-y-4">
+                <label className="text-sm font-semibold text-primary uppercase tracking-wide">
+                  Calls Converted to Sales Ratio
+                </label>
+                <div className="text-4xl font-bold text-primary mb-2">
+                  {conversionRatio}<span className="text-2xl text-muted-foreground">%</span>
                 </div>
                 <Slider
                   value={[conversionRatio]}
@@ -76,20 +75,20 @@ const RevenueCalculator = () => {
                   max={100}
                   min={1}
                   step={1}
-                  className="w-full"
+                  className="w-full calculator-slider"
                 />
               </div>
-            </div>
+            </Card>
+          </div>
 
-            {/* Second Row - Average Revenue */}
-            <div className="space-y-3">
-              <div className="flex justify-between items-center">
-                <label className="text-base md:text-lg font-semibold text-foreground">
-                  Average Revenue per Sale
-                </label>
-                <span className="text-2xl font-bold text-primary">
-                  {formatCurrency(avgRevenue)}
-                </span>
+          {/* Second Row - Average Revenue */}
+          <Card className="p-8 bg-card border-border shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <div className="space-y-4">
+              <label className="text-sm font-semibold text-primary uppercase tracking-wide">
+                Average Revenue per Sale
+              </label>
+              <div className="text-4xl font-bold text-primary mb-2">
+                {formatCurrency(avgRevenue)}
               </div>
               <Slider
                 value={[avgRevenue]}
@@ -97,26 +96,27 @@ const RevenueCalculator = () => {
                 max={100000}
                 min={100}
                 step={100}
-                className="w-full"
+                className="w-full calculator-slider"
               />
             </div>
+          </Card>
 
-            {/* Result */}
-            <div className="pt-8 border-t border-border">
-              <div className="text-center space-y-2">
-                <p className="text-lg font-semibold text-muted-foreground">
-                  Potential Monthly Revenue Increase
-                </p>
-                <p className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-primary via-primary-light to-primary bg-clip-text text-transparent">
-                  {formatCurrency(potentialMonthlyRevenue)}
-                </p>
-              </div>
+          {/* Result Card */}
+          <Card className="p-12 bg-calculator-result-bg border-primary/20 shadow-xl">
+            <div className="text-center space-y-3">
+              <p className="text-sm font-semibold text-primary uppercase tracking-wide">
+                Potential Monthly Revenue Increase
+              </p>
+              <p className="text-5xl md:text-6xl font-bold">
+                <span className="text-accent">{formatCurrency(potentialMonthlyRevenue).split('.')[0].slice(0, 1)}</span>
+                <span className="text-primary">{formatCurrency(potentialMonthlyRevenue).slice(1)}</span>
+              </p>
             </div>
-          </div>
-        </Card>
+          </Card>
+        </div>
 
         {/* CTA Box */}
-        <Card className="mt-8 p-8 md:p-10 bg-gradient-to-br from-primary/10 via-background to-primary-light/10 border-primary/20">
+        <Card className="p-8 md:p-10 bg-gradient-to-br from-primary/10 via-background to-primary-light/10 border-primary/20">
           <div className="text-center space-y-6">
             <h3 className="text-2xl md:text-3xl font-bold text-foreground">
               Ready to Turn These Numbers Into Reality?

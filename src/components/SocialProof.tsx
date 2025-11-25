@@ -11,20 +11,13 @@ import client2_6 from '@/assets/clients/client2-6.png';
 import client2_7 from '@/assets/clients/client2-7.png';
 
 const SocialProof = () => {
-  const clientLogosRow1 = [client1_1, client1_2];
-  const clientLogosRow2 = [
-    client2_1,
-    client2_2,
-    client2_3,
-    client2_4,
-    client2_5,
-    client2_6,
-    client2_7,
-  ];
+  // Distribute logos evenly across two rows
+  const clientLogosRow1 = [client1_1, client1_2, client2_1, client2_2, client2_3];
+  const clientLogosRow2 = [client2_4, client2_5, client2_6, client2_7];
 
   // Duplicate logos for seamless loop
-  const allLogosRow1 = [...clientLogosRow1, ...clientLogosRow1];
-  const allLogosRow2 = [...clientLogosRow2, ...clientLogosRow2];
+  const allLogosRow1 = [...clientLogosRow1, ...clientLogosRow1, ...clientLogosRow1];
+  const allLogosRow2 = [...clientLogosRow2, ...clientLogosRow2, ...clientLogosRow2];
 
   return (
     <div className="py-16 bg-background">
