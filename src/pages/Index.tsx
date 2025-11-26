@@ -19,7 +19,7 @@ import Footer from '@/components/Footer';
 import bellaAgent from '@/assets/bella-agent-tight.png';
 import sarahAgent from '@/assets/sarah-agent.png';
 import alexAgent from '@/assets/alex-agent.png';
-import chrisAgent from '@/assets/chris-agent-real.png';
+import chrisAgent from '@/assets/chris-agent-new.png';
 import bellaAgentNew from '@/assets/bella-agent-tight-new.png';
 import jamesAgent from '@/assets/james-agent.png';
 
