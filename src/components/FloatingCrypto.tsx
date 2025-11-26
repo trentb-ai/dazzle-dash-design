@@ -9,12 +9,13 @@ interface CryptoIconProps {
   position: { x: string; y: string }
   index: number
   className?: string
+  onClick?: () => void
 }
 
-export function FloatingCrypto({ image, icon, name, role, position, index, className }: CryptoIconProps) {
+export function FloatingCrypto({ image, icon, name, role, position, index, className, onClick }: CryptoIconProps) {
   return (
     <motion.div
-      className={cn("absolute hidden md:flex flex-col items-center gap-2", className)}
+      className={cn("absolute hidden md:flex flex-col items-center gap-2 cursor-pointer", className)}
       style={{
         left: position.x,
         top: position.y,
@@ -35,6 +36,9 @@ export function FloatingCrypto({ image, icon, name, role, position, index, class
           ease: "easeInOut",
         },
       }}
+      onClick={onClick}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.95 }}
     >
       <div
         className="w-32 h-32 rounded-full flex items-center justify-center backdrop-blur-sm border-2 border-primary/40 overflow-hidden"
