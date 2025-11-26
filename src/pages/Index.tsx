@@ -16,11 +16,11 @@ import SystemFeaturesBento from '@/components/SystemFeaturesBento';
 import HowWeWork from '@/components/HowWeWork';
 import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
-import bellaAgent from '@/assets/bella-agent.png';
+import bellaAgent from '@/assets/bella-agent-tight.png';
 import sarahAgent from '@/assets/sarah-agent.png';
 import alexAgent from '@/assets/alex-agent.png';
-import chrisAgent from '@/assets/chris-agent.png';
-import bellaAgentNew from '@/assets/bella-agent-new.png';
+import chrisAgent from '@/assets/chris-agent-real.png';
+import bellaAgentNew from '@/assets/bella-agent-tight-new.png';
 import jamesAgent from '@/assets/james-agent.png';
 
 const Index = () => {

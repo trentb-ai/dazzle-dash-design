@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { Target, MessageSquare, CheckCircle, FileText, Calendar, Globe } from 'lucide-react';
 import { Button } from './ui/button';
-import maddieAgent from '../assets/bella-agent.png';
+import maddieAgent from '../assets/bella-agent-tight.png';
 import alexAgent from '../assets/alex-agent.png';
 import sarahAgent from '../assets/sarah-agent.png';
-import chrisAgent from '../assets/chris-agent.png';
-import bellaAgent from '../assets/bella-agent-new.png';
+import chrisAgent from '../assets/chris-agent-real.png';
+import bellaAgent from '../assets/bella-agent-tight-new.png';
 import jamesAgent from '../assets/james-agent.png';
 
 const TabbedAgents = () => {
