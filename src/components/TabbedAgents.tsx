@@ -8,8 +8,16 @@ import chrisAgent from '../assets/chris-agent-new.png';
 import bellaAgent from '../assets/bella-agent-tight-new.png';
 import jamesAgent from '../assets/james-agent.png';
 
-const TabbedAgents = () => {
-    const [activeTab, setActiveTab] = useState(0);
+interface TabbedAgentsProps {
+    activeTab?: number;
+    setActiveTab?: (index: number) => void;
+}
+
+const TabbedAgents = ({ activeTab: controlledActiveTab, setActiveTab: controlledSetActiveTab }: TabbedAgentsProps = {}) => {
+    const [internalActiveTab, setInternalActiveTab] = useState(0);
+    
+    const activeTab = controlledActiveTab !== undefined ? controlledActiveTab : internalActiveTab;
+    const setActiveTab = controlledSetActiveTab || setInternalActiveTab;
 
     const agents = [
         {

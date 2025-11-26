@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import { Hero, AnimatedContainer, TextStagger } from '@/components/LovableHero';
@@ -25,19 +25,26 @@ import jamesAgent from '@/assets/james-agent.png';
 
 const Index = () => {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+  const [activeAgentTab, setActiveAgentTab] = useState(0);
+  const tabbedAgentsRef = useRef<HTMLDivElement>(null);
 
   useExitIntent(() => {
     setIsDemoModalOpen(true);
   });
 
   const aiAgents = [
-    { image: bellaAgent, name: "Maddie", role: "Voice AI Receptionist", position: { x: "10%", y: "60%" } },
-    { image: sarahAgent, name: "Sarah", role: "Outbound SMS & DMs Agent", position: { x: "85%", y: "25%" } },
-    { image: alexAgent, name: "Alex", role: "Ad Leads Converter", position: { x: "10%", y: "25%" } },
-    { image: chrisAgent, name: "Chris", role: "Website Concierge", position: { x: "85%", y: "60%" } },
-    { image: bellaAgentNew, name: "Bella", role: "Onboarding Agent", position: { x: "25%", y: "80%" } },
-    { image: jamesAgent, name: "James", role: "Events Concierge", position: { x: "70%", y: "80%" } }
+    { image: bellaAgent, name: "Maddie", role: "Voice AI Receptionist", position: { x: "10%", y: "60%" }, tabIndex: 0 },
+    { image: sarahAgent, name: "Sarah", role: "Outbound SMS & DMs Agent", position: { x: "85%", y: "25%" }, tabIndex: 2 },
+    { image: alexAgent, name: "Alex", role: "Ad Leads Converter", position: { x: "10%", y: "25%" }, tabIndex: 1 },
+    { image: chrisAgent, name: "Chris", role: "Website Concierge", position: { x: "85%", y: "60%" }, tabIndex: 3 },
+    { image: bellaAgentNew, name: "Bella", role: "Onboarding Agent", position: { x: "25%", y: "80%" }, tabIndex: 4 },
+    { image: jamesAgent, name: "James", role: "Events Concierge", position: { x: "70%", y: "80%" }, tabIndex: 5 }
   ];
+
+  const handleAgentClick = (tabIndex: number) => {
+    setActiveAgentTab(tabIndex);
+    tabbedAgentsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -54,6 +61,7 @@ const Index = () => {
                 role={agent.role}
                 position={agent.position}
                 index={index}
+                onClick={() => handleAgentClick(agent.tabIndex)}
               />
             ))}
 
@@ -63,14 +71,15 @@ const Index = () => {
                 {aiAgents.map((agent, index) => (
                   <motion.div
                     key={index}
-                    className="flex flex-col items-center flex-shrink-0"
+                    className="flex flex-col items-center flex-shrink-0 cursor-pointer"
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: index * 0.1 }}
                     style={{ marginLeft: index > 0 ? '-12px' : '0' }}
+                    onClick={() => handleAgentClick(agent.tabIndex)}
                   >
                     <div
-                      className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary/40 backdrop-blur-sm"
+                      className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary/40 backdrop-blur-sm transition-transform hover:scale-110"
                       style={{
                         background: "rgba(180, 176, 254, 0.15)",
                         boxShadow: "0 0 20px rgba(180, 176, 254, 0.3)",
@@ -136,7 +145,9 @@ const Index = () => {
         <RevenueCalculator />
         <DemoBox />
         <ProblemsSection />
-        <TabbedAgents />
+        <div ref={tabbedAgentsRef}>
+          <TabbedAgents activeTab={activeAgentTab} setActiveTab={setActiveAgentTab} />
+        </div>
         <AgentBenefitsBento />
         <SystemFeaturesBento />
         <HowWeWork />
