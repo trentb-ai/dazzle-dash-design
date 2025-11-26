@@ -37,11 +37,11 @@ export function FloatingCrypto({ image, icon, name, role, position, index, class
         },
       }}
       onClick={onClick}
-      whileHover={{ scale: 1.15 }}
+      whileHover={{ scale: 1.15, transition: { duration: 0.15 } }}
       whileTap={{ scale: 0.95 }}
     >
       <div
-        className="w-32 h-32 rounded-full flex items-center justify-center backdrop-blur-sm border-2 border-primary/40 overflow-hidden transition-all duration-300 hover:border-accent hover:shadow-[0_0_50px_rgba(251,146,60,0.6)]"
+        className="w-32 h-32 rounded-full flex items-center justify-center backdrop-blur-sm border-2 border-primary/40 overflow-hidden transition-all duration-75 hover:border-accent hover:shadow-[0_0_50px_rgba(251,146,60,0.6)]"
         style={{
           background: image ? "rgba(180, 176, 254, 0.15)" : "rgba(180, 176, 254, 0.1)",
           boxShadow: "0 0 40px rgba(180, 176, 254, 0.4)",
