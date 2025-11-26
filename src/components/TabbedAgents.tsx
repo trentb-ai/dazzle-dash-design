@@ -213,15 +213,6 @@ const TabbedAgents = ({ activeTab: controlledActiveTab, setActiveTab: controlled
                                     </div>
                                 ))}
                             </div>
-
-                            {/* CTA */}
-                            <Button
-                                size="lg"
-                                className="w-full md:w-auto group relative overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/30 rounded-full"
-                            >
-                                <span className="relative z-10">{currentAgent.cta}</span>
-                                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-out"></div>
-                            </Button>
                         </div>
 
                         {/* Right: Value Prop & Key Feature */}
@@ -249,6 +240,15 @@ const TabbedAgents = ({ activeTab: controlledActiveTab, setActiveTab: controlled
                                     </div>
                                 </div>
                             </div>
+
+                            {/* CTA */}
+                            <Button
+                                size="lg"
+                                className="w-full group relative overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/30 rounded-full"
+                            >
+                                <span className="relative z-10">{currentAgent.cta}</span>
+                                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-out"></div>
+                            </Button>
                         </div>
                     </div>
                 </div>
